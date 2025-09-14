@@ -93,7 +93,23 @@ class Program
         // del.BeginInvoke(AsyncCallbackMethod, "hakuna");
 
         //////////////////////////////////////////////////////////////////
-        
+
+        // Example For Hw
+        Console.OutputEncoding = System.Text.Encoding.Unicode;
+
+        Console.Write("Mətni daxil edin: ");
+        string text = Console.ReadLine();
+
+
+        // Şifrələmə
+        char[] encrypted = XorProcess(text);
+        Console.WriteLine("Şifrələnmiş (XOR): " + new string(encrypted));
+
+        // Deşifrələmə (eyni funksiya ilə)
+        char[] decrypted = XorProcess(new string(encrypted));
+        Console.WriteLine("Deşifrələnmiş: " + new string(decrypted));
+
+        //////////////////////////////////////////////////////////////////
 
 
 
@@ -173,4 +189,17 @@ class Program
         Console.WriteLine(Thread.CurrentThread.IsThreadPoolThread);
     }
 
+    const char key = 'K';
+
+    static char[] XorProcess(string input)
+    {
+        char[] chars = input.ToCharArray();
+
+        for (int i = 0; i < chars.Length; i++)
+        {
+            chars[i] = (char)(chars[i] ^ key);
+        }
+
+        return chars;
+    }
 }
