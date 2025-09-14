@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35825.156 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sys_Lesson3_ThreadPool_CancelllationToken", "Sys_Lesson3_ThreadPool_CancelllationToken\Sys_Lesson3_ThreadPool_CancelllationToken.csproj", "{C4F8952E-70D0-45E0-B730-6D7DF11B1A3C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4F8952E-70D0-45E0-B730-6D7DF11B1A3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4F8952E-70D0-45E0-B730-6D7DF11B1A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4F8952E-70D0-45E0-B730-6D7DF11B1A3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4F8952E-70D0-45E0-B730-6D7DF11B1A3C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C218E697-5355-4DD7-A963-17D65ED02584}
+	EndGlobalSection
+EndGlobal
