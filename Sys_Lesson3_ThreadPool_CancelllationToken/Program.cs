@@ -94,24 +94,41 @@ class Program
 
         //////////////////////////////////////////////////////////////////
 
-        // Example For Hw
-        Console.OutputEncoding = System.Text.Encoding.Unicode;
-
-        Console.Write("Mətni daxil edin: ");
-        string text = Console.ReadLine();
-
-
-        // Şifrələmə
-        char[] encrypted = XorProcess(text);
-        Console.WriteLine("Şifrələnmiş (XOR): " + new string(encrypted));
-
-        // Deşifrələmə (eyni funksiya ilə)
-        char[] decrypted = XorProcess(new string(encrypted));
-        Console.WriteLine("Deşifrələnmiş: " + new string(decrypted));
+        // // Example For Hw
+        // Console.OutputEncoding = System.Text.Encoding.Unicode;
+        //
+        // Console.Write("Mətni daxil edin: ");
+        // string text = Console.ReadLine();
+        //
+        //
+        // // Şifrələmə
+        // char[] encrypted = XorProcess(text);
+        // Console.WriteLine("Şifrələnmiş (XOR): " + new string(encrypted));
+        //
+        // // Deşifrələmə (eyni funksiya ilə)
+        // char[] decrypted = XorProcess(new string(encrypted));
+        // Console.WriteLine("Deşifrələnmiş: " + new string(decrypted));
 
         //////////////////////////////////////////////////////////////////
 
+        //  Cancellation Token
 
+        using var cts = new CancellationTokenSource();
+
+        ThreadPool.QueueUserWorkItem(_ =>
+        {
+            MoneyTransfer(cts.Token);
+
+        });
+
+        Console.ReadKey();
+
+        cts.Cancel();
+
+        while (true)
+        {
+           
+        }
 
     }
 
@@ -182,15 +199,17 @@ class Program
         Console.WriteLine();
     }
 
-    static void AsyncCallbackMethod(IAsyncResult ar)
+    public static void AsyncCallbackMethod(IAsyncResult ar)
     {
         Console.WriteLine(ar.AsyncState.ToString());
         Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
         Console.WriteLine(Thread.CurrentThread.IsThreadPoolThread);
     }
 
-    const char key = 'K';
 
+    #region EncryptAndDecrypt
+
+    const char key = 'K';
     static char[] XorProcess(string input)
     {
         char[] chars = input.ToCharArray();
@@ -202,4 +221,29 @@ class Program
 
         return chars;
     }
+
+    #endregion
+
+    public static void MoneyTransfer(CancellationToken cancellationToken)
+    {
+        Console.WriteLine($"Id: {Thread.CurrentThread.ManagedThreadId}");
+
+        try
+        {
+            for (var i = 0; i < 10; i++)
+            {
+                cancellationToken.ThrowIfCancellationRequested();
+                Console.WriteLine("Send Money");
+
+                Thread.Sleep(2000);
+
+                Console.WriteLine("Take Money");
+            }
+        }
+        catch (OperationCanceledException oex)
+        {
+            Console.WriteLine(oex.Message);
+        }
+    }
+
 }
