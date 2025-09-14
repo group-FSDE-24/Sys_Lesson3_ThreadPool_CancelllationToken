@@ -5,6 +5,8 @@ VisualStudioVersion = 17.13.35825.156 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sys_Lesson3_ThreadPool_CancelllationToken", "Sys_Lesson3_ThreadPool_CancelllationToken\Sys_Lesson3_ThreadPool_CancelllationToken.csproj", "{C4F8952E-70D0-45E0-B730-6D7DF11B1A3C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp1", "ConsoleApp1\ConsoleApp1.csproj", "{3CF06409-C5B0-4A57-85DE-5BDC751A570F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C4F8952E-70D0-45E0-B730-6D7DF11B1A3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4F8952E-70D0-45E0-B730-6D7DF11B1A3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4F8952E-70D0-45E0-B730-6D7DF11B1A3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CF06409-C5B0-4A57-85DE-5BDC751A570F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CF06409-C5B0-4A57-85DE-5BDC751A570F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CF06409-C5B0-4A57-85DE-5BDC751A570F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CF06409-C5B0-4A57-85DE-5BDC751A570F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

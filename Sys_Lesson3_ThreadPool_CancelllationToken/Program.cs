@@ -7,6 +7,8 @@ namespace Sys_Lesson3_ThreadPool_CancelllationToken;
 
 class Program
 {
+    delegate void DoSomething();
+
     static void Main(string[] args)
     {
         //////////////////////////////////////////////////////////////////
@@ -55,29 +57,43 @@ class Program
 
         // Thread vs ThreadPool
 
-        {
-            int operations = 500;
-            var watch = new Stopwatch();
+        // {
+        //     int operations = 500;
+        //     var watch = new Stopwatch();
+        // 
+        //     watch.Start();
+        //     UseThread(operations);
+        //     watch.Stop();
+        // 
+        //     Console.WriteLine("Thread Milliseconds :" + watch.ElapsedMilliseconds);
+        // 
+        //     watch.Reset();
+        // 
+        // 
+        //     watch.Start();
+        //     UseThreadPool(operations);
+        //     watch.Stop();
+        // 
+        // 
+        //     Console.WriteLine("ThreadPool Milliseconds :" + watch.ElapsedMilliseconds);
+        // 
+        // 
+        //   
+        // }
 
-            watch.Start();
-            UseThread(operations);
-            watch.Stop();
+        //////////////////////////////////////////////////////////////////
 
-            Console.WriteLine("Thread Milliseconds :" + watch.ElapsedMilliseconds);
+        // // Not Support
 
-            watch.Reset();
+        // DoSomething del = () => {
+        //     Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
+        //     Console.WriteLine(Thread.CurrentThread.IsThreadPoolThread);
+        // };
+        // 
+        // del.BeginInvoke(AsyncCallbackMethod, "hakuna");
 
-
-            watch.Start();
-            UseThreadPool(operations);
-            watch.Stop();
-
-
-            Console.WriteLine("ThreadPool Milliseconds :" + watch.ElapsedMilliseconds);
-
-
-          
-        }
+        //////////////////////////////////////////////////////////////////
+        
 
 
 
@@ -129,7 +145,6 @@ class Program
         Console.WriteLine();
     }
 
-
     public static void UseThreadPool(int operation)
     {
         using var countdown = new CountdownEvent(operation);
@@ -150,4 +165,12 @@ class Program
         countdown.Wait();
         Console.WriteLine();
     }
+
+    static void AsyncCallbackMethod(IAsyncResult ar)
+    {
+        Console.WriteLine(ar.AsyncState.ToString());
+        Console.WriteLine(Thread.CurrentThread.ManagedThreadId);
+        Console.WriteLine(Thread.CurrentThread.IsThreadPoolThread);
+    }
+
 }
